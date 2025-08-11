@@ -1,0 +1,29 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const CreateEventLanding = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="p-6 max-w-lg mx-auto bg-white rounded shadow">
+      <h2 className="text-2xl font-bold mb-4 text-center">Create  Event</h2>
+      <p className="mb-6 text-center">Choose the type of event to create</p>
+      <div className="flex justify-center gap-4">
+        <button
+          onClick={() => navigate('/createevent/technical')}
+          className="bg-blue-600 text-white py-2 px-6 rounded hover:bg-blue-700"
+        >
+          Technical Event
+        </button>
+        {/* <button
+          onClick={() => navigate('/createevent/non-technical')}
+          className="bg-green-600 text-white py-2 px-6 rounded hover:bg-green-700"
+        >
+          Non-Technical Event
+        </button> */}
+      </div>
+    </div>
+  );
+};
+
+export default CreateEventLanding;
