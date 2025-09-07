@@ -10,7 +10,7 @@ const EventList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3001/list/estore')
+    fetch('https://eventspot-2.onrender.com/list/estore')
       .then(res => res.json())
       .then(data => setEvents(data))
       .catch(err => console.error('Error fetching events:', err));

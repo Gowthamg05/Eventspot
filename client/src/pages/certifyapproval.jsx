@@ -12,7 +12,7 @@ const CertificateApprovalPage = () => {
   useEffect(() => {
     const fetchCertificates = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/certifyfetch/certificate");
+        const res = await axios.get("https://eventspot-2.onrender.com/certifyfetch/certificate");
         setCertificates(res.data);
       } catch (err) {
         console.error("Error fetching certificates", err);

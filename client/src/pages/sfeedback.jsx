@@ -20,7 +20,7 @@ const FeedbackForm = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/feed/feedback', {
+      const response = await fetch('https://eventspot-2.onrender.com/feed/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

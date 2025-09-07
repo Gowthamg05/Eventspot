@@ -5,7 +5,7 @@ const MyEvents = ({ user }) => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/facultyRoute/Event/${user.email}`)
+    axios.get(`https://eventspot-2.onrender.com/facultyRoute/Event/${user.email}`)
       .then((res) => setEvents(res.data))
       .catch(() => console.log("Error loading events"));
   }, [user.email]);

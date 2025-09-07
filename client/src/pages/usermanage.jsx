@@ -13,7 +13,7 @@ const UserManagement = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:3001/uRoute/save');
+        const response = await fetch('https://eventspot-2.onrender.com/uRoute/save');
         const data = await response.json();
         setUsers({
           faculty: data.faculty,

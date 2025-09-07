@@ -39,7 +39,7 @@ const Login = () => {
     setLoading(true);
     try {
       console.log("Form Data Sent to Server:", formData);
-      const response = await axios.post("http://localhost:3001/authRoute/login", formData);
+      const response = await axios.post("https://eventspot-2.onrender.com/authRoute/login", formData);
       console.log("Server Response:", response);
 
       if (response.status === 200) {

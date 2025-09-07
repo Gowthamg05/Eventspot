@@ -19,7 +19,7 @@ const ViewEvent = () => {
   useEffect(() => {
     const fetchApplications = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/eventfetch/application");
+        const response = await axios.get("https://eventspot-2.onrender.com/eventfetch/application");
         setApplications(response.data);
         setFilteredApps(response.data);
       } catch (err) {

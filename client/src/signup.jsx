@@ -56,7 +56,7 @@ const handleSubmit = async (e) => {
 
   setLoading(true);
   try {
-    const response = await axios.post("http://localhost:3001/authRoute/save", formData);
+    const response = await axios.post("https://eventspot-2.onrender.com/authRoute/save", formData);
     if (response.status === 201) {
       toast.success("🎉 Signup Successful! Redirecting...");
       setTimeout(() => {

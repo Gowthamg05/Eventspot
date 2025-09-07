@@ -21,7 +21,7 @@ const EditEvent = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await axios.get(`http://localhost:3001/faculty/estore/${id}`);
+        const res = await axios.get(`https://eventspot-2.onrender.com/faculty/estore/${id}`);
         setEvent(res.data);
       } catch (err) {
         console.error("Error fetching event:", err);
@@ -44,7 +44,7 @@ const handleUpdate = async (e) => {
   setIsUpdating(true);
 
   try {
-    const response = await axios.put(`http://localhost:3001/faculty/estore/${id}`, event);
+    const response = await axios.put(`https://eventspot-2.onrender.com/faculty/estore/${id}`, event);
     alert("Event updated successfully!");
     navigate("/view-events", { replace: true });
   } catch (err) {

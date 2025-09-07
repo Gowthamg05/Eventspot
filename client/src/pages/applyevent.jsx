@@ -11,7 +11,7 @@ const ApplyEvent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3001/eve/estore/${eventId}`)
+    fetch(`https://eventspot-2.onrender.com/eve/estore/${eventId}`)
       .then(res => res.json())
       .then(data => setEventDetails(data))
       .catch(err => console.error('Error fetching event details:', err));
@@ -37,7 +37,7 @@ const ApplyEvent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:3001/apply/application', {
+    fetch('https://eventspot-2.onrender.com/apply/application', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ eventId, ...formData }),

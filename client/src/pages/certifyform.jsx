@@ -26,7 +26,7 @@ const Certificate = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/event/estore');
+        const res = await axios.get('https://eventspot-2.onrender.com/event/estore');
         if (Array.isArray(res.data.events)) {
           setEvents(res.data.events);
         } else {
@@ -53,7 +53,7 @@ const Certificate = () => {
     setVerifiedEventName('');
 
     try {
-      const res = await axios.post('http://localhost:3001/verify/application', { email });
+      const res = await axios.post('https://eventspot-2.onrender.com/verify/application', { email });
       if (res.data.found) {
         setMatched(true);
         setVerifiedEventName(res.data.verifiedEventName || 'Event info not needed');
@@ -73,7 +73,7 @@ const Certificate = () => {
     setFormSubmitting(true);
 
     try {
-      const res = await axios.post('http://localhost:3001/upload/certificate', {
+      const res = await axios.post('https://eventspot-2.onrender.com/upload/certificate', {
         email,
         eventName,
         studentName,
@@ -112,7 +112,7 @@ const Certificate = () => {
     const image = canvas.toDataURL('image/jpeg');
 
     try {
-      await axios.post('http://localhost:3001/send-certificate', {
+      await axios.post('https://eventspot-2.onrender.com/send-certificate', {
         email,
         image,
         studentName,

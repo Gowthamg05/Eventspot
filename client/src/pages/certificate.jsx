@@ -11,7 +11,7 @@ const CertificateVerifier = () => {
   const handleVerify = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3001/student/certificate/verify", {
+      const res = await axios.post("https://eventspot-2.onrender.com/student/certificate/verify", {
         email,
         event_name: event,
       });
@@ -64,7 +64,7 @@ const CertificateVerifier = () => {
       {verified && (
         <div className="mt-4">
           <a
-            href={`http://localhost:3001/student/certificate/download?email=${email}&event=${event}`}
+            href={`https://eventspot-2.onrender.com/student/certificate/download?email=${email}&event=${event}`}
             className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
             download
           >

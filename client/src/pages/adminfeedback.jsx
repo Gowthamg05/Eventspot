@@ -14,7 +14,7 @@ const AdminFeedback = () => {
   const navigate = useNavigate(); // Hook for navigation
 
   useEffect(() => {
-    axios.get('http://localhost:3001/afeed/feedback')
+    axios.get('https://eventspot-2.onrender.com/afeed/feedback')
       .then(res => {
         const feedbackList = Array.isArray(res.data) ? res.data : [];
         setFeedbacks(feedbackList);

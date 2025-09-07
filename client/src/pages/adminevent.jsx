@@ -10,7 +10,7 @@ const AdminEventTable = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get('http://localhost:3001/afetch/estore', {
+      const res = await axios.get('https://eventspot-2.onrender.com/afetch/estore', {
         params: filters,
       });
       console.log("Fetched data:", res.data);

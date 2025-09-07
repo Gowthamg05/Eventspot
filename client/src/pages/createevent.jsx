@@ -39,7 +39,7 @@ const CreateEvent = ({ user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/faculty/estore", eventData);
+      await axios.post("https://eventspot-2.onrender.com/faculty/estore", eventData);
       toast.success("Event created successfully!");
       navigate("/faculty/dashboard");
     } catch (err) {

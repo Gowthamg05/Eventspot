@@ -10,7 +10,7 @@ const FacultyViewAnnouncement = () => {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/facultyview/announcement");
+        const response = await axios.get("https://eventspot-2.onrender.com/facultyview/announcement");
         setAnnouncements(response.data);
       } catch (err) {
         console.error("Failed to load announcements:", err);

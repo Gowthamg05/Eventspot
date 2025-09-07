@@ -17,7 +17,7 @@
 //   useEffect(() => {
 //     const fetchEvents = async () => {
 //       try {
-//         const response = await axios.get("http://localhost:3001/fetchevent/estore");
+//         const response = await axios.get("https://eventspot-2.onrender.com/fetchevent/estore");
 //         const allEvents = response.data.events || [];
 //         setEvents(allEvents);
 //         setFilteredEvents(allEvents);
@@ -132,7 +132,7 @@ const EventApprovalDashboard = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/fetchevent/estore");
+        const response = await axios.get("https://eventspot-2.onrender.com/fetchevent/estore");
         const allEvents = response.data.events || [];
         setEvents(allEvents);
         setFilteredEvents(allEvents);

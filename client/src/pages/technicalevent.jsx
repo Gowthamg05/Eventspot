@@ -24,7 +24,7 @@ const TechnicalEventForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/faculty/estore", eventData);
+      const response = await axios.post("https://eventspot-2.onrender.com/faculty/estore", eventData);
       toast.success("Event created successfully!");
       navigate("/faculty/dashboard");
     } catch (err) {

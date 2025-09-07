@@ -24,7 +24,7 @@ const FacultyDashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        await axios.get("http://localhost:3001/faculty/estore");
+        await axios.get("https://eventspot-2.onrender.com/faculty/estore");
         // If needed, handle the response here
       } catch (error) {
         console.error("Error fetching event stats:", error);

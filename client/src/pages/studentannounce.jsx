@@ -9,7 +9,7 @@ const StudentAnnouncements = () => {
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
-        const res = await axios.get('http://localhost:3001/studentview/announcement');
+        const res = await axios.get('https://eventspot-2.onrender.com/studentview/announcement');
         const filtered = res.data.filter(a => {
           const target = a?.target?.trim().toLowerCase();
           return target === 'student' || target === 'students' || target === 'all';
