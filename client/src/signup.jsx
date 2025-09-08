@@ -74,75 +74,103 @@ const handleSubmit = async (e) => {
   }
 };
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 flex justify-center items-center p-4">
-      <div className="w-full max-w-md bg-white p-6 rounded-2xl shadow-xl">
-        <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">📝 Create Your Account</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+  <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 flex justify-center items-center p-4">
+    <div className="w-full max-w-md bg-white p-6 rounded-2xl shadow-xl sm:p-8">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">📝 Create Your Account</h2>
 
-          {/* Name */}
+      <form onSubmit={handleSubmit} className="space-y-5">
+
+        {/* Name */}
+        <div>
+          <label className="block text-sm text-gray-600">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+            placeholder="Enter your name"
+            required
+          />
+          {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block text-sm text-gray-600">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+            placeholder="Enter your email"
+            required
+          />
+          {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
+        </div>
+
+        {/* Password */}
+        <div>
+          <label className="block text-sm text-gray-600">Password</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+            placeholder="Enter password"
+            required
+          />
+          {errors.password && <p className="text-xs text-red-500 mt-1">{errors.password}</p>}
+        </div>
+
+        {/* Role */}
+        <div>
+          <label className="block text-sm text-gray-600">Role</label>
+          <select
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+            required
+          >
+            <option value="">Select role</option>
+            <option value="admin">Admin</option>
+            <option value="faculty">Faculty</option>
+            <option value="student">Student</option>
+          </select>
+        </div>
+
+        {/* Conditional fields */}
+        {formData.role === "faculty" && (
           <div>
-            <label className="block text-sm text-gray-600">Full Name</label>
+            <label className="block text-sm text-gray-600">Department</label>
             <input
               type="text"
-              name="name"
-              value={formData.name}
+              name="department"
+              value={formData.department}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-              placeholder="Enter your name"
-              required
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+              placeholder="Enter department"
             />
-            {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
           </div>
+        )}
 
-          {/* Email */}
-          <div>
-            <label className="block text-sm text-gray-600">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-              placeholder="Enter your email"
-              required
-            />
-            {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
-          </div>
+        {formData.role === "student" && (
+          <>
+            <div>
+              <label className="block text-sm text-gray-600">Register Number</label>
+              <input
+                type="text"
+                name="registerNumber"
+                value={formData.registerNumber}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                placeholder="Enter register number"
+              />
+            </div>
 
-          {/* Password */}
-          <div>
-            <label className="block text-sm text-gray-600">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-              placeholder="Enter password"
-              required
-            />
-            {errors.password && <p className="text-xs text-red-500 mt-1">{errors.password}</p>}
-          </div>
-
-          {/* Role */}
-          <div>
-            <label className="block text-sm text-gray-600">Role</label>
-            <select
-              name="role"
-              value={formData.role}
-              onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-              required
-            >
-              <option value="">Select role</option>
-              <option value="admin">Admin</option>
-              <option value="faculty">Faculty</option>
-              <option value="student">Student</option>
-            </select>
-          </div>
-
-          {/* Conditional fields */}
-          {formData.role === "faculty" && (
             <div>
               <label className="block text-sm text-gray-600">Department</label>
               <input
@@ -150,72 +178,47 @@ const handleSubmit = async (e) => {
                 name="department"
                 value={formData.department}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
                 placeholder="Enter department"
               />
             </div>
-          )}
 
-          {formData.role === "student" && (
-            <>
-              <div>
-                <label className="block text-sm text-gray-600">Register Number</label>
-                <input
-                  type="text"
-                  name="registerNumber"
-                  value={formData.registerNumber}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-                  placeholder="Enter register number"
-                />
-              </div>
+            <div>
+              <label className="block text-sm text-gray-600">Year</label>
+              <input
+                type="text"
+                name="year"
+                value={formData.year}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
+                placeholder="Enter year"
+              />
+            </div>
+          </>
+        )}
 
-              <div>
-                <label className="block text-sm text-gray-600">Department</label>
-                <input
-                  type="text"
-                  name="department"
-                  value={formData.department}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-                  placeholder="Enter department"
-                />
-              </div>
+        {/* Submit */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition text-sm"
+        >
+          {loading ? "Signing Up..." : "Sign Up"}
+        </button>
+      </form>
 
-              <div>
-                <label className="block text-sm text-gray-600">Year</label>
-                <input
-                  type="text"
-                  name="year"
-                  value={formData.year}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm"
-                  placeholder="Enter year"
-                />
-              </div>
-            </>
-          )}
-
-          {/* Submit */}
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition text-sm"
-          >
-            {loading ? "Signing Up..." : "Sign Up"}
-          </button>
-        </form>
-
-        <p className="text-center text-sm mt-4 text-gray-600">
-          Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
-            Login here
-          </a>
-        </p>
-      </div>
-      <ToastContainer position="top-right" autoClose={3000} />
+      <p className="text-center text-sm mt-6 text-gray-600">
+        Already have an account?{" "}
+        <a href="/login" className="text-blue-600 hover:underline">
+          Login here
+        </a>
+      </p>
     </div>
-  );
+
+    <ToastContainer position="top-right" autoClose={3000} />
+  </div>
+);
+
 };
 
 export default Signup;

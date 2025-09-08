@@ -24,33 +24,41 @@ const StudentAnnouncements = () => {
   }, []);
 
   return (
-    <div className="p-6">
-      <button
-        onClick={() => navigate(-1)}
-        className="mb-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-        aria-label="Go back"
-      >
-        ← Back
-      </button>
+  <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
+    {/* Back Button */}
+    <button
+      onClick={() => navigate(-1)}
+      className="mb-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm sm:text-base"
+      aria-label="Go back"
+    >
+      ← Back
+    </button>
 
-      <h1 className="text-2xl font-bold mb-6 text-gray-800">📢 Announcements for Students</h1>
+    {/* Heading */}
+    <h1 className="text-xl sm:text-2xl font-bold mb-6 text-gray-800 text-center sm:text-left">
+      📢 Announcements for Students
+    </h1>
 
-      {announcements.length === 0 ? (
-        <p className="text-gray-500">No announcements available.</p>
-      ) : (
-        announcements.map((a, i) => (
+    {/* Announcements List */}
+    {announcements.length === 0 ? (
+      <p className="text-gray-500 text-center sm:text-left">No announcements available.</p>
+    ) : (
+      <div className="space-y-4">
+        {announcements.map((a, i) => (
           <div
             key={i}
-            className="bg-white p-5 rounded-lg shadow-sm border border-gray-200 mb-4"
+            className="bg-white p-4 sm:p-5 rounded-lg shadow-sm border border-gray-200"
           >
-            <h2 className="text-lg font-semibold text-gray-900">{a.title}</h2>
-            <p className="text-gray-700 mt-1">{a.message}</p>
-            <p className="text-xs text-gray-400 mt-2">🎯 Target: {a.target}</p>
+            <h2 className="text-base sm:text-lg font-semibold text-gray-900">{a.title}</h2>
+            <p className="text-sm sm:text-base text-gray-700 mt-1">{a.message}</p>
+            <p className="text-xs sm:text-sm text-gray-400 mt-2">🎯 Target: {a.target}</p>
           </div>
-        ))
-      )}
-    </div>
-  );
+        ))}
+      </div>
+    )}
+  </div>
+);
+
 };
 
 export default StudentAnnouncements;

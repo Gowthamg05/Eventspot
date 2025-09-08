@@ -34,8 +34,11 @@ const TechnicalEventForm = () => {
   };
 
   return (
-    <div className="p-4 max-w-md mx-auto bg-white rounded-xl shadow-md">
-      <h2 className="text-xl font-semibold mb-4 text-center text-blue-700">Create Event</h2>
+  <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-6">
+    <div className="w-full max-w-md bg-white rounded-xl shadow-md p-6 sm:p-8">
+      <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-center text-blue-700">
+        Create Event
+      </h2>
 
       {/* Back Button */}
       <button
@@ -46,8 +49,7 @@ const TechnicalEventForm = () => {
         ← Back to Dashboard
       </button>
 
-      <form onSubmit={handleSubmit} className="space-y-3 text-sm">
-        
+      <form onSubmit={handleSubmit} className="space-y-4 text-sm">
         {/* Function Name */}
         <div>
           <label htmlFor="functionName" className="block text-gray-600 mb-1">
@@ -60,7 +62,7 @@ const TechnicalEventForm = () => {
             value={eventData.functionName}
             onChange={handleChange}
             required
-            className="border p-2 w-full rounded"
+            className="border p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
@@ -74,7 +76,7 @@ const TechnicalEventForm = () => {
             value={eventData.category}
             onChange={handleChange}
             required
-            className="border p-2 w-full rounded"
+            className="border p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <option value="">-- Select Category --</option>
             <option value="Technical">Technical</option>
@@ -95,7 +97,7 @@ const TechnicalEventForm = () => {
             value={eventData.title}
             onChange={handleChange}
             required
-            className="border border-gray-300 px-2 py-1 w-full rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="border px-2 py-1 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
@@ -107,19 +109,21 @@ const TechnicalEventForm = () => {
           <textarea
             id="description"
             name="description"
-            rows="2"
+            rows="3"
             placeholder="Short description"
             value={eventData.description}
             onChange={handleChange}
             required
-            className="border border-gray-300 px-2 py-1 w-full rounded text-sm resize-none focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="border px-2 py-1 w-full rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
         {/* Date & Time */}
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <div className="flex-1">
-            <label htmlFor="date" className="block text-gray-600 mb-1">Date</label>
+            <label htmlFor="date" className="block text-gray-600 mb-1">
+              Date
+            </label>
             <input
               type="date"
               id="date"
@@ -127,11 +131,13 @@ const TechnicalEventForm = () => {
               value={eventData.date}
               onChange={handleChange}
               required
-              className="border border-gray-300 px-2 py-1 w-full rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="border px-2 py-1 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
           <div className="flex-1">
-            <label htmlFor="time" className="block text-gray-600 mb-1">Time</label>
+            <label htmlFor="time" className="block text-gray-600 mb-1">
+              Time
+            </label>
             <input
               type="text"
               id="time"
@@ -140,7 +146,7 @@ const TechnicalEventForm = () => {
               value={eventData.time}
               onChange={handleChange}
               required
-              className="border border-gray-300 px-2 py-1 w-full rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="border px-2 py-1 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
         </div>
@@ -158,20 +164,22 @@ const TechnicalEventForm = () => {
             value={eventData.venue}
             onChange={handleChange}
             required
-            className="border border-gray-300 px-2 py-1 w-full rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="border px-2 py-1 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-1.5 rounded text-sm hover:bg-blue-700 transition"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
         >
           Create Event
         </button>
       </form>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default TechnicalEventForm;

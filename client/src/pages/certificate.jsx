@@ -30,52 +30,61 @@ const CertificateVerifier = () => {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded shadow">
-      <h2 className="text-xl font-bold mb-4">🎓 Certificate Access Form</h2>
-      <form onSubmit={handleVerify}>
-        <div className="mb-3">
-          <label className="block font-semibold">Email</label>
-          <input
-            type="email"
-            className="border px-2 py-1 w-full rounded"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="block font-semibold">Event Name</label>
-          <input
-            type="text"
-            className="border px-2 py-1 w-full rounded"
-            value={event}
-            onChange={(e) => setEvent(e.target.value)}
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+  <div className="p-4 max-w-md mx-auto bg-white rounded-lg shadow-md">
+
+    <h2 className="text-2xl font-bold mb-6 text-center">🎓 Certificate Access Form</h2>
+
+    <form onSubmit={handleVerify} className="space-y-4">
+
+      <div>
+        <label className="block font-semibold text-sm mb-1">Email</label>
+        <input
+          type="email"
+          className="border px-3 py-2 w-full rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block font-semibold text-sm mb-1">Event Name</label>
+        <input
+          type="text"
+          className="border px-3 py-2 w-full rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          value={event}
+          onChange={(e) => setEvent(e.target.value)}
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+      >
+        Verify
+      </button>
+    </form>
+
+    {verified && (
+      <div className="mt-4 text-center">
+        <a
+          href={`https://eventspot-2.onrender.com/student/certificate/download?email=${email}&event=${event}`}
+          className="inline-block bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
+          download
         >
-          Verify
-        </button>
-      </form>
+          📥 Download Certificate
+        </a>
+      </div>
+    )}
 
-      {verified && (
-        <div className="mt-4">
-          <a
-            href={`https://eventspot-2.onrender.com/student/certificate/download?email=${email}&event=${event}`}
-            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-            download
-          >
-            📥 Download Certificate
-          </a>
-        </div>
-      )}
+    {error && (
+      <p className="text-red-500 mt-4 text-center text-sm">{error}</p>
+    )}
+    
+  </div>
+);
 
-      {error && <p className="text-red-500 mt-2">{error}</p>}
-    </div>
-  );
 };
 
 export default CertificateVerifier;

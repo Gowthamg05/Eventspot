@@ -108,94 +108,116 @@ const ViewEvent = () => {
   if (error) return <div className="text-center text-red-600 mt-10">{error}</div>;
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold text-indigo-700">📋 Student Applications</h2>
-        <button
-          onClick={() => navigate("/faculty/dashboard")}
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-        >
-          ⬅️ Back
-        </button>
-      </div>
+    <div className="p-4 bg-gray-100 min-h-screen">
+  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+    <h2 className="text-2xl sm:text-3xl font-bold text-indigo-700">📋 Student Applications</h2>
+    <button
+      onClick={() => navigate("/faculty/dashboard")}
+      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+    >
+      ⬅️ Back
+    </button>
+  </div>
 
-      <div className="flex flex-wrap gap-4 mb-4">
-        <input
-          type="text"
-          placeholder="🔍 Filter by Function Name"
-          value={functionNameFilter}
-          onChange={(e) => setFunctionNameFilter(e.target.value)}
-          className="p-2 border border-gray-300 rounded w-60"
-        />
-        <select
-          value={categoryFilter}
-          onChange={(e) => setCategoryFilter(e.target.value)}
-          className="p-2 border border-gray-300 rounded w-60"
-        >
-          <option value="">All Categories</option>
-          <option value="Technical">Technical</option>
-          <option value="Non-Technical">Non-Technical</option>
-        </select>
-        <input
-          type="text"
-          placeholder="🏫 Filter by Department"
-          value={departmentFilter}
-          onChange={(e) => setDepartmentFilter(e.target.value)}
-          className="p-2 border border-gray-300 rounded w-60"
-        />
-      </div>
+  <div className="flex flex-wrap gap-4 mb-4">
+    <input
+      type="text"
+      placeholder="🔍 Filter by Function Name"
+      value={functionNameFilter}
+      onChange={(e) => setFunctionNameFilter(e.target.value)}
+      className="p-2 border border-gray-300 rounded w-full sm:w-60"
+    />
+    <select
+      value={categoryFilter}
+      onChange={(e) => setCategoryFilter(e.target.value)}
+      className="p-2 border border-gray-300 rounded w-full sm:w-60"
+    >
+      <option value="">All Categories</option>
+      <option value="Technical">Technical</option>
+      <option value="Non-Technical">Non-Technical</option>
+    </select>
+    <input
+      type="text"
+      placeholder="🏫 Filter by Department"
+      value={departmentFilter}
+      onChange={(e) => setDepartmentFilter(e.target.value)}
+      className="p-2 border border-gray-300 rounded w-full sm:w-60"
+    />
+  </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-          <thead className="bg-indigo-600 text-white">
-            <tr>
-              <th className="px-6 py-3 text-left">👤 Name</th>
-              <th className="px-6 py-3 text-left">📧 Email</th>
-              <th className="px-6 py-3 text-left">🏫 Department</th>
-              <th className="px-6 py-3 text-left">📂 Event Type</th>
-              <th className="px-6 py-3 text-left">🎉 Function Name</th>
-              <th className="px-6 py-3 text-left">🏷️ Event Title</th>
+  {/* Table for larger screens */}
+  <div className="hidden sm:block overflow-x-auto">
+    <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+      <thead className="bg-indigo-600 text-white">
+        <tr>
+          <th className="px-6 py-3 text-left">👤 Name</th>
+          <th className="px-6 py-3 text-left">📧 Email</th>
+          <th className="px-6 py-3 text-left">🏫 Department</th>
+          <th className="px-6 py-3 text-left">📂 Event Type</th>
+          <th className="px-6 py-3 text-left">🎉 Function Name</th>
+          <th className="px-6 py-3 text-left">🏷️ Event Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredApps.length > 0 ? (
+          filteredApps.map((app) => (
+            <tr key={app._id} className="border-b hover:bg-indigo-50 transition">
+              <td className="px-6 py-3">{app.name}</td>
+              <td className="px-6 py-3">{app.email}</td>
+              <td className="px-6 py-3">{app.department}</td>
+              <td className="px-6 py-3">{app.eventId?.category || <span className="text-gray-400">N/A</span>}</td>
+              <td className="px-6 py-3">{app.eventId?.functionName || <span className="text-gray-400">N/A</span>}</td>
+              <td className="px-6 py-3">{app.eventId?.title || <span className="text-gray-400">N/A</span>}</td>
             </tr>
-          </thead>
-          <tbody>
-            {filteredApps.length > 0 ? (
-              filteredApps.map((app) => (
-                <tr key={app._id} className="border-b hover:bg-indigo-50 transition">
-                  <td className="px-6 py-3">{app.name}</td>
-                  <td className="px-6 py-3">{app.email}</td>
-                  <td className="px-6 py-3">{app.department}</td>
-                  <td className="px-6 py-3">{app.eventId?.category || <span className="text-gray-400">N/A</span>}</td>
-                  <td className="px-6 py-3">{app.eventId?.functionName || <span className="text-gray-400">N/A</span>}</td>
-                  <td className="px-6 py-3">{app.eventId?.title || <span className="text-gray-400">N/A</span>}</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="6" className="text-center py-4 text-gray-500">
-                  No applications found with selected filters.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="6" className="text-center py-4 text-gray-500">
+              No applications found with selected filters.
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
 
-      <div className="mt-6 flex gap-4">
-        <button
-          onClick={downloadPDF}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        >
-          📥 Download as PDF
-        </button>
-
-        <button
-          onClick={downloadExcel}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        >
-          📥 Download as Excel
-        </button>
+  {/* Card layout for mobile */}
+  <div className="sm:hidden space-y-4">
+    {filteredApps.length > 0 ? (
+      filteredApps.map((app) => (
+        <div key={app._id} className="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+          <p className="text-sm font-semibold">👤 Name: <span className="font-normal">{app.name}</span></p>
+          <p className="text-sm font-semibold">📧 Email: <span className="font-normal">{app.email}</span></p>
+          <p className="text-sm font-semibold">🏫 Department: <span className="font-normal">{app.department}</span></p>
+          <p className="text-sm font-semibold">📂 Event Type: <span className="font-normal">{app.eventId?.category || 'N/A'}</span></p>
+          <p className="text-sm font-semibold">🎉 Function Name: <span className="font-normal">{app.eventId?.functionName || 'N/A'}</span></p>
+          <p className="text-sm font-semibold">🏷️ Event Title: <span className="font-normal">{app.eventId?.title || 'N/A'}</span></p>
+        </div>
+      ))
+    ) : (
+      <div className="text-center text-gray-500 p-4 bg-white rounded-lg shadow-md">
+        No applications found with selected filters.
       </div>
-    </div>
+    )}
+  </div>
+
+  <div className="mt-6 flex flex-col sm:flex-row gap-4">
+    <button
+      onClick={downloadPDF}
+      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto"
+    >
+      📥 Download as PDF
+    </button>
+
+    <button
+      onClick={downloadExcel}
+      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full sm:w-auto"
+    >
+      📥 Download as Excel
+    </button>
+  </div>
+</div>
+
   );
 };
 

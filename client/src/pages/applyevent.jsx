@@ -58,92 +58,96 @@ const ApplyEvent = () => {
       });
   };
 
-  return (
-    <div className="min-h-screen bg-gray-100 flex justify-center items-center p-4">
-      <div className="w-full max-w-md bg-white p-6 rounded-md shadow border border-gray-200">
-        <button
-          className="mb-4 text-sm text-blue-600 hover:underline"
-          onClick={() => navigate(-1)}
-        >
-          ⬅ Back
-        </button>
+return (
+  <div className="min-h-screen bg-gray-100 flex justify-center items-center p-4">
+    <div className="w-full max-w-md bg-white p-6 rounded-md shadow border border-gray-200">
 
-        <h1 className="text-xl font-semibold text-center text-gray-800 mb-6">
-          Apply for {eventDetails.title}
-        </h1>
+      <button
+        className="mb-4 text-sm text-blue-600 hover:underline"
+        onClick={() => navigate(-1)}
+      >
+        ⬅ Back
+      </button>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm text-gray-600 mb-1">Function Name</label>
-            <input
-              type="text"
-              value={eventDetails.functionName || ''}
-              className="w-full border border-gray-300 rounded-sm px-3 py-1.5 text-sm bg-gray-100"
-              disabled
-            />
-          </div>
+      <h1 className="text-xl sm:text-2xl font-semibold text-center text-gray-800 mb-6">
+        Apply for {eventDetails.title}
+      </h1>
 
-          <div>
-            <label className="block text-sm text-gray-600 mb-1">Event Title</label>
-            <input
-              type="text"
-              value={eventDetails.title || ''}
-              className="w-full border border-gray-300 rounded-sm px-3 py-1.5 text-sm bg-gray-100"
-              disabled
-            />
-          </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
 
-          <div>
-            <label className="block text-sm text-gray-600 mb-1">Your Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-sm px-3 py-1.5 text-sm"
-              required
-            />
-          </div>
+        <div>
+          <label className="block text-sm text-gray-600 mb-1">Function Name</label>
+          <input
+            type="text"
+            value={eventDetails.functionName || ''}
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm bg-gray-100"
+            disabled
+          />
+        </div>
 
-          <div>
-            <label className="block text-sm text-gray-600 mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-sm px-3 py-1.5 text-sm"
-              required
-            />
-          </div>
+        <div>
+          <label className="block text-sm text-gray-600 mb-1">Event Title</label>
+          <input
+            type="text"
+            value={eventDetails.title || ''}
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm bg-gray-100"
+            disabled
+          />
+        </div>
 
-          <div>
-            <label className="block text-sm text-gray-600 mb-1">Department</label>
-            <input
-              type="text"
-              name="department"
-              value={formData.department}
-              onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-sm px-3 py-1.5 text-sm"
-              required
-            />
-          </div>
+        <div>
+          <label className="block text-sm text-gray-600 mb-1">Your Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+            required
+          />
+        </div>
 
-          <div className="pt-2">
-            <button
-              type="submit"
-              className="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 rounded-sm"
-            >
-              Submit Application
-            </button>
-          </div>
-        </form>
-      </div>
+        <div>
+          <label className="block text-sm text-gray-600 mb-1">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+            required
+          />
+        </div>
 
-      {/* Toast container */}
-      <ToastContainer />
+        <div>
+          <label className="block text-sm text-gray-600 mb-1">Department</label>
+          <input
+            type="text"
+            name="department"
+            value={formData.department}
+            onChange={handleInputChange}
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm"
+            required
+          />
+        </div>
+
+        <div className="pt-2">
+          <button
+            type="submit"
+            className="w-full bg-green-600 hover:bg-green-700 text-white text-sm font-medium py-2 rounded-md transition"
+          >
+            Submit Application
+          </button>
+        </div>
+        
+      </form>
     </div>
-  );
+
+    {/* Toast container */}
+    <ToastContainer />
+  </div>
+);
+
 };
 
 export default ApplyEvent;

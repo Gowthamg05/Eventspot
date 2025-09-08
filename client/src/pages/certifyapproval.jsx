@@ -64,67 +64,72 @@ const CertificateApprovalPage = () => {
     navigate(`/make-certificate/${id}`, { state: selectedCertificate });
   };
 
-  return (
-    <div className="p-6">
-      <h2 className="text-xl font-bold mb-4">📄 Certificate Approval</h2>
+return (
+  <div className="p-4 max-w-full mx-auto">
 
-      <div className="mb-4">
-        <button
-          onClick={goBack}
-          className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
-        >
-          ← Back to Dashboard
-        </button>
-      </div>
+    <h2 className="text-xl font-bold mb-4 text-center">📄 Certificate Approval</h2>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border rounded-md text-sm">
-          <thead>
-            <tr className="bg-gray-100 text-left">
-              <th className="p-2 border">Select</th>
-              <th className="p-2 border">Student Name</th>
-              <th className="p-2 border">Email</th>
-              <th className="p-2 border">Event Name</th>
-              <th className="p-2 border">Event Result</th>
-              <th className="p-2 border">Actions</th>
+    <div className="mb-4 text-center">
+      <button
+        onClick={goBack}
+        className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+      >
+        ← Back to Dashboard
+      </button>
+    </div>
+
+    <div className="overflow-x-auto">
+      <table className="min-w-full bg-white border rounded-md text-sm">
+        <thead>
+          <tr className="bg-gray-100 text-left">
+            <th className="p-2 border">Select</th>
+            <th className="p-2 border">Student Name</th>
+            <th className="p-2 border">Email</th>
+            <th className="p-2 border">Event Name</th>
+            <th className="p-2 border">Result</th>
+            <th className="p-2 border">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {certificates.map((cert) => (
+            <tr key={cert._id} className="hover:bg-gray-50">
+              <td className="p-2 border text-center">
+                <input
+                  type="checkbox"
+                  checked={selectedIds.includes(cert._id)}
+                  onChange={() => handleCheckboxChange(cert._id)}
+                />
+              </td>
+              <td className="p-2 border truncate max-w-xs">{cert.studentName}</td>
+              <td className="p-2 border truncate max-w-xs">{cert.email}</td>
+              <td className="p-2 border truncate max-w-xs">{cert.eventName}</td>
+              <td className="p-2 border">{cert.eventResult}</td>
+              <td className="p-2 border text-center">
+                <button
+                  onClick={() => handleMakeCertificate(cert._id)}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+                >
+                  Create
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {certificates.map((cert) => (
-              <tr key={cert._id}>
-                <td className="p-2 border text-center">
-                  <input
-                    type="checkbox"
-                    checked={selectedIds.includes(cert._id)}
-                    onChange={() => handleCheckboxChange(cert._id)}
-                  />
-                </td>
-                <td className="p-2 border">{cert.studentName}</td>
-                <td className="p-2 border">{cert.email}</td>
-                <td className="p-2 border">{cert.eventName}</td>
-                <td className="p-2 border">{cert.eventResult}</td>
-                <td className="p-2 border">
-                  <button
-                    onClick={() => handleMakeCertificate(cert._id)}
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
-                  >
-                    created
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
+    <div className="mt-4 text-center">
       <button
         onClick={handleApprove}
-        className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
       >
         Approve Selected
       </button>
     </div>
-  );
+
+  </div>
+);
+
 };
 
 export default CertificateApprovalPage;

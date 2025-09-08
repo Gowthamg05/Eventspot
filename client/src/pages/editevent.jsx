@@ -57,63 +57,66 @@ const handleUpdate = async (e) => {
 
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
-        ✏️ Edit Event
-      </h2>
-      <form
-        onSubmit={handleUpdate}
-        className="max-w-xl mx-auto bg-white p-6 rounded shadow"
-      >
-        {["functionName", "title", "venue", "category"].map((field, idx) => (
-          <input
-            key={idx}
-            type="text"
-            name={field}
-            value={event[field]}
-            onChange={handleChange}
-            placeholder={`Enter ${field}`}
-            className="w-full mb-4 p-2 border rounded"
-            required
-          />
-        ))}
+  <div className="min-h-screen bg-gray-100 p-4">
+    <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">
+      ✏️ Edit Event
+    </h2>
 
+    <form
+      onSubmit={handleUpdate}
+      className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow"
+    >
+      {["functionName", "title", "venue", "category"].map((field, idx) => (
         <input
-          type="date"
-          name="date"
-          value={event.date?.split("T")[0] || ""}
+          key={idx}
+          type="text"
+          name={field}
+          value={event[field]}
           onChange={handleChange}
-          className="w-full mb-4 p-2 border rounded"
+          placeholder={`Enter ${field}`}
+          className="w-full mb-4 p-3 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
           required
         />
-        <input
-          type="time"
-          name="time"
-          value={event.time}
-          onChange={handleChange}
-          className="w-full mb-6 p-2 border rounded"
-          required
-        />
+      ))}
 
-        <div className="flex justify-between">
-          <button
-            type="submit"
-            className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-          >
-            Update
-          </button>
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600"
-          >
-            
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
-  );
+      <input
+        type="date"
+        name="date"
+        value={event.date?.split("T")[0] || ""}
+        onChange={handleChange}
+        className="w-full mb-4 p-3 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        required
+      />
+
+      <input
+        type="time"
+        name="time"
+        value={event.time}
+        onChange={handleChange}
+        className="w-full mb-6 p-3 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+        required
+      />
+
+      <div className="flex flex-col sm:flex-row gap-4">
+        <button
+          type="submit"
+          className="w-full sm:w-auto bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+        >
+          Update
+        </button>
+
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="w-full sm:w-auto bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600 transition"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+);
+
 };
 
 export default EditEvent;
